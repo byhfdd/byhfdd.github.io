@@ -9,23 +9,115 @@
 <meta property="article:author" content="海润丰">
 <meta property="article:tag" content="海润丰有限公司，海润丰，济宁海润丰有限公司，济宁海润丰">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp"><link rel="shortcut icon" href="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp"><link rel="canonical" href="http://byhfdd.github.io/hrfship/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/hrfship/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp"><script type="application/ld+json"></script><link rel="shortcut icon" href="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp"><link rel="canonical" href="http://byhfdd.github.io/hrfship/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/hrfship/css/index.css?v=5.4.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/hrfship/',
   algolia: undefined,
-  localSearch: {"path":"/hrfship/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: undefined,
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"距离上次更新有","messageNext":"天了，文章的内容可能已经过时了。"},
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
     homepage: false,
     post: false
   },
-  runtime: '天',
+  runtime: '',
   dateSuffix: {
     just: '刚刚',
     min: '分钟前',
@@ -34,14 +126,14 @@
     month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
   infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
     buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: true,
+  islazyloadPlugin: true,
   isAnchor: false,
   percent: {
     toc: true,
@@ -50,174 +142,104 @@
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '济宁海润丰有限公司',
-  isPost: false,
-  isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-08-21 23:39:56'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          const now = new Date()
-          const hour = now.getHours()
-          const isNight = hour <= 8 || hour >= 22
-          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-          else if (t === 'light') activateLightMode()
-          else activateDarkMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp" onerror="onerror=null;src='https://dl.img.timecdn.cn/2024/01/01/friend_404.gif!h.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/hrfship/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/hrfship/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/hrfship/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hrfship/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fal fa-book"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/hrfship/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hrfship/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-minus"></i><span> 上海润缗</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/runmin1/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物质</span></a></li><li><a class="site-page child" href="/hrfship/runmin2/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物料供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin3/"><i class="fa-fw far fa-folder-open"></i><span> 船舶伙食供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin4/"><i class="fa-fw far fa-folder-open"></i><span> 船舶货物绑扎</span></a></li><li><a class="site-page child" href="/hrfship/runmin5/"><i class="fa-fw far fa-folder-open"></i><span> 船舶技术服务</span></a></li><li><a class="site-page child" href="/hrfship/runmin6/"><i class="fa-fw far fa-folder-open"></i><span> 船舶业务服务</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hrfship/dispatch/"><i class="fa-fw far fa-folder-open"></i><span> 劳务派遣</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/contact/"><i class="fa-fw fas fa-address-card"></i><span> 联系我们</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url('https://dl3.img.timecdn.cn/2025/04/04/boot1.png!h.webp')"><nav id="nav"><span id="blog-info"><a href="/hrfship/" title="济宁海润丰有限公司"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp"/><span class="site-name">济宁海润丰有限公司</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hrfship/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fal fa-book"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/hrfship/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hrfship/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-minus"></i><span> 上海润缗</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/runmin1/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物质</span></a></li><li><a class="site-page child" href="/hrfship/runmin2/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物料供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin3/"><i class="fa-fw far fa-folder-open"></i><span> 船舶伙食供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin4/"><i class="fa-fw far fa-folder-open"></i><span> 船舶货物绑扎</span></a></li><li><a class="site-page child" href="/hrfship/runmin5/"><i class="fa-fw far fa-folder-open"></i><span> 船舶技术服务</span></a></li><li><a class="site-page child" href="/hrfship/runmin6/"><i class="fa-fw far fa-folder-open"></i><span> 船舶业务服务</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hrfship/dispatch/"><i class="fa-fw far fa-folder-open"></i><span> 劳务派遣</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/contact/"><i class="fa-fw fas fa-address-card"></i><span> 联系我们</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">济宁海润丰有限公司</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="mailto:s8712808@126.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="新船员上船须知">新船员上船须知</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T20:19:14.000Z" title="发表于 2014-03-06 04:19:14">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/">知识园地</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/">船员知识</a></span></div><div class="content">中波金乡基地船员上船须知1、船员在接到上船通知后，处理好家里相关事项，然后携带自己正常穿的衣物（含冬季衣服）、再备点-牙刷牙膏、洗发水等必需品就可。不要带的太多（以防以后下船公休时你有可能在国外买些东西、东西多到时回家很不好带），在上海或在船靠港时随时可以购买。2、船上发劳防用品：香皂、毛巾、洗衣粉、卫生纸、手套、工作服等等；在船上公家免费提供住宿，卧具是每月一换。不用带任何卧具。3、单位为每个人配备的伙食费一般每天9个美金左右，碗筷等都是船上的，房间每人一标准间（带卫生间）。所以大家食宿，不用考虑。4、船员接到通知后，在合理的路线上所产生的路费和住宿费中波是凭车票和发票给予报销的，以前一般飞机票和高铁不给报销，特殊除外。5、来到上海后-上船前的体检费和免疫费约六七百元，留好所有发票，中波公司报销。6、 新船员上船前——去医院体检和去海关大楼打针（办理健康证和免疫证书），一定要携带本人身份证，和2寸证件照片4张。7、乘车路线：抵达上海后，做地铁1号线，到通河新村站下车，从2号出口，就是浦江之星旅馆（地址：宝山区共和新路5523号–近长江西路；联系电话：021-56765008。8、报到 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="船员基地与中介的区别">船员基地与中介的区别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T20:19:14.000Z" title="发表于 2014-03-06 04:19:14">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/">知识园地</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/">船员知识</a></span></div><div class="content">船员基地与中介的区别  1、中介只是：介绍-招工招聘、没有直接招工招聘的权利（国家规定经营人力资源、招工招聘、要有地区级以上颁发的资质证书，否则是非法的）没有与船员签合同的权利；  2、中介一般是指中介所、一般规模也不是很大，个人也可以做中介。  3、中介——意思就是中间介绍人或中间介绍所；起到的只是介绍作用（但作为职业介绍没有资质、无证经营也是非法的）。
-  船员基地：一般是指大的央企或国企船公司（船东公司）与合作公司共同办理设置的海员招工管理机构。  1、规范的符合标准的基地，要具有省级人力资源和社会保障局备案、地市级下文行政审批（由市政府的红头批文）的发人力资源经营许可证（资质）的单位，且要在当地县级以上工商局注册的合法单位。  2、代表基地的公司有签合同、缴纳社保、招工招聘、发放工资、决定奖惩、协调管理、职工的就业、安置与长期管理服务、等权利和项目；经营基地的公司必须是合法的企业（个人或民间团体是不行的）。  3、 目前有很多黑中介、或不合法的中介所或个人在搞船员招工、招聘、介绍，实际上是不合法的。就像建设承包大楼或公路或桥梁，要有相应资质一样，没有政府审批的招工招聘职业介绍、 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="船员疫苗接种事项">船员疫苗接种事项</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T20:19:14.000Z" title="发表于 2014-03-06 04:19:14">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/">知识园地</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/">船员知识</a></span></div><div class="content">船员疫苗接种事项  1、一般新船员上船、都要进行（黄热和霍乱）疫苗接种；费用大概300多元，凭发票公司报销。
-  2、预防接种（打免疫疫苗）的地址：上海海关（中山东一路13号外滩钟楼）一楼进门右侧。（就是上海外滩最繁华最热闹最具有上海标志的地方）
-  3、在上海百度地图——输入起点：上海远洋医院体检中心————终点：上海海关（中山东一路13号外滩钟楼）就可查得到。
-  4、船员到上海后一般第二天一早7点30前准时到达：上海远洋医院体检中心；进行体检；在等结果时，打的或坐公交到海关大楼打针预防接种，回来正好拿结果。一上午全部结束。下午1点30去中波船员部开会，等上船。如当天不上船，有多余时间，可以在上海玩玩。 
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="沪东中华造船集团有限公司招工简章">沪东中华造船集团有限公司招工简章</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:50:22.000Z" title="发表于 2014-03-06 03:50:22">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">招聘简章：
-工种：电焊工（手工焊、二氧化碳气体保护焊）、装配工（冷做工、铆焊工）、打磨工、船舶电工、管子工、普工、船装工、行车工、起重工、火工、架子工、油漆工、保安、保洁、学徒工等。
-工资待遇：实行小时工薪制，学徒工每小时为13元，熟练工工价另订，每天工作八小时，自愿加班者工资另加，每月28号将上月工资汇到本人的账户。
-其他福利待遇：员工一经录用为了保护员工的利益，我公司将为员工购买城镇保险，并与员工签订劳动合同，目前我公司的福利待遇如下：(1)电焊津贴（一类焊工每月100元，二类焊工500，三类焊工1000）(2)等级工津贴（中级每月500元，高级工每月1000元），两者可同时享受。(3)高温费：800元—1500元(4)年终奖：4000—8000元工作满一年后我公司将对部分技术骨干经考核后提拔为组班长，班组长为7000—10000元。
-热烈欢迎广大有志青年来我公司工作，我公司将为每个人提供施展自己才能的舞台，找到自己人生价值的所在！！！
-电焊工（手工焊、二氧化碳气体保护焊）、装配工（冷做工、铆焊工）、打磨工、船舶电工、管子工、普工、学徒工等。电焊工：熟练工（130-220元8小时） ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海东方航空95530招聘票务客服">上海东方航空95530招聘票务客服</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:48:30.000Z" title="发表于 2014-03-06 03:48:30">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海东方航空95530招聘票务客服一、任职资格：工作时间：一、薪资待遇全职员工：中文席：税前2900元&#x2F;月-3600元&#x2F;月，（按员工等级评定工资，含车、饭贴）外语席：税前4250元&#x2F;月，（含车、饭贴）学生实习：税前2000元&#x2F;月（含车、饭贴）
-二、其他福利加四金，住房补贴300元&#x2F;月（按实际路线核定），年底双薪，高温发放，带薪休假，旅游疗养，免费体检等（以上福利实习生基本同全职）
-三、岗位要求入职需参加培训，为期15个工作日，每天补贴30元，考核通过后签订两年劳动合同。（中文席）：（1）口齿清晰、声音悦耳，普通话标准（能听懂沪语优先）；（2）反应敏捷、亲切耐心；（3）中文听打输入40字&#x2F;分钟以上；（4）熟练应用office软件；（5）具有良好的人际沟通能力和语言表达能力；（6）性格开朗、成熟自信，应变能力强。（韩语席）：（1）口齿清晰、声音悦耳，普通话标准（能听懂沪语优先）；（2）韩语的熟练听讲写(3)能力反应敏捷、亲切耐心；（4）熟练应用office软件；（5）具有良好的人际沟通能力和语言表达能力；（6）性格开朗、成熟自信， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海浦东机场公安辅警招聘">上海浦东机场公安辅警招聘</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海浦东机场公安辅警招聘  一、招聘条件18-28周岁，男，1.70米以上，初中以上文化程度，身体健康，无传染病，无纹身，无违法记录，视力正常，退伍军人、有专业特长的或学历高的可优先录取。
-  二、免费提供提供免费住房，房间内有有空调，楼层内有洗衣机、冰箱、液晶电视、乒乓球室、免费网吧、浴室。统一发放被褥、制服（春秋、夏、冬三套）脸盆、拖鞋等劳防用品。。单位有福利食堂，刷卡进餐。入职即办理综合保险（含工伤保险、药费补贴和养老保险）。
- 三、福利待遇第一个月带薪军训军事化管理，第一个月工资1500元，第二个月2000以上，第三个月3000元以上。全年工资总额3万元以上。8小时做五休二。12小时做二休二，每月15号发放工资。每年有年终奖：第一年：1200元；第二年：2400元；第三年：3600元。每年有20天休假（带薪），回家车费报销。
-联系人；张经理 13583739958 0537-8706519
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海虹桥机场航站楼服务人员招聘简章">上海虹桥机场航站楼服务人员招聘简章</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海虹桥机场航站楼服务人员招聘简章一、岗位职责1、文笔书写工整；2、指引机场客人办理登机相关手续；3、办理航空公司联名会员卡、信用卡；4、办理机票业务和其他相关联业务；
-二、任职要求1、只限女性，年龄18-28岁； 身高160以上，男孩子可以带1-2个，身高170以上。2、态度端正、开朗活泼、言谈举止大方，待人诚恳； 3、文笔书写工整；4、品行端正，抗压能力强，良好服务意识；5、工作积极主动，责任心强，能独立开展工作，具有开拓精神； 6、有较强的学习意识和团队合作精神。
-三、公司福利1、提成制工资，月薪一般在2700-5000元；保底底薪 2700元面试印象实习期为：三到六个月、根据个人表现可提前转正实习期内工资比正式工资低五百。2、工作6天休息一天；3、公司提供每月手机费补助；4、公司提供年终奖；5、提供机场食堂饭卡，自己冲卡进餐，不包住宿。6、如有未尽事宜或更改以公司最新制度为准7、工服押金：600离职全额退还（折旧费除外）
-四、休息制 单休
-五、工作范畴 1、工作地点：虹桥机场2号航站楼3楼
-六、用工方式：签订正式劳动合同两年、（外包）
-联系人；张经理 13583739958   ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海高铁诚聘高铁乘务员乘服员">上海高铁诚聘高铁乘务员乘服员</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海高铁诚聘高铁乘务员乘服员岗位职责:职位要求:1、女，年龄18-30岁遵纪守法，品德良好，且取得中专及以上学历2、身高1.60米以上，五官端正，体态匀称，形象气质佳，讲话发音正确、标准、吐词清晰、善于表达.3、身体健康，无传染性病例，视力正常，能适应列车上长期工作。无晕车。
-待遇、福利及工作地点、内容1、动车乘务人员工作方向，工作地点:(上海)2、凡经铁路有关部门及学校面试，考核。合格后，一律实行合同制，一经录用，公司具有完善的培训体系.将提供良好的培训及发展机会3、实行做2休3制度(每月12-15天班)统一服装。统一箱包。录用后薪资:工资4000-6000元&#x2F;月，不包括奖金，补助等其它福利待遇。4、按照国家规定缴金，提供同行间最具竞争力的薪金待遇以及广阔的发展空间。5、报名填表时，需提供本人身份证原件(验证)及正反复印件5张、一寸相片5张。联系人；张经理 13583739958
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="招聘随航普工/远洋公司诚聘国内国际船员海员随航普工">招聘随航普工/远洋公司诚聘国内国际船员海员随航普工</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">远洋公司诚聘国内国际船员海员随航普工岗位职责：
-（一）招聘要求：1、年龄在18~51周岁，初中（含）以上文化程度。2、身体健康无高血压，无重传染性疾病。3、无过大家庭负担，能适应长期性出差。4、有在公司长期稳定发展的打算。5、性格好，能团结同事，能服从领导的安排。6、做事认真细心负责，有较强的企业荣誉感和集体精神。
-（二）主要工作内容及时间：1、一个航期大约15-25天，靠岸安排休息6-8天，无规则休息时间，闲时多休，忙时少休。 2、主要负责散货的拼箱、货物的盘点、分拣、整理、核对、整理、抛锚解缆、清洗甲板。3、小件物品需人工搬运，大件用叉车、吊车、无重大体力活。
-（三）报名需知：1、先电话联系，方便人事部门安排时间接待，面试通过需做好随时上班的准备。2、带好一寸招聘2张（免冠、头发不能盖住眼睛、耳朵尽量露出来）、身份证原件、身份证复印件2张。3、党员、退伍军人优先，无经验可简单培训上岗。
-（四）福利待遇：1、第一个月为试用期，工资为6000元+奖金+全勤+津贴。转正后为8000-12000元&#x2F;月+奖金+全勤+津贴。2、船上包吃包住，单人、双人宿舍需提前申请。3、公司负责缴纳 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="浦东机场东方航空客服招聘">浦东机场东方航空客服招聘</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">浦东机场东方航空客服招聘   中国东方航空股份有限公司是一家总部设在中国上海的国有控股航空公司，于2002年在原中国东方航空集团公司的基础上，兼并中国西北航空公司，联合云南航空公司重组而成 。 航空公司呼叫中心客服专员
-一、岗位要求：1、中文客服专员：1）中专或高中以上学历；2）熟练使用计算机常用办公软件，电脑打字熟练，30字&#x2F;分以上；3）普通话标准，具有良好的语言表达与沟通能力；4）有良好的客户服务意识和抗压能力，责任心强；
-二普通客服户籍不限、男女18-35岁，一分钟打字30个字左右，普通话标准第一个月试用底薪1500元，期满后底薪1900元 +提成10%+全勤+绩效奖+补贴，夜班补贴50元，试用期工资3000元左右、平均工资3500元左右。
-三、高级客服户籍不限、男女18-35岁，一分钟打字60个字左右，普通话标准，要会一门外语，底薪2500元+提成10%+全勤+绩效奖+补贴，夜班补贴50元，每月津贴0-2000元、综合工资4500元以上，8小时工作制，双休。
-四、工作范围 查询订票和订票人工服务
-五、能适应倒班。
-联系人；张经理 13583739958 0537-87 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/hrfship/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/hrfship/">1</a><span class="space">&hellip;</span><a class="page-number" href="/hrfship/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/hrfship/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/hrfship/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp" onerror="this.onerror=null;this.src='https://dl.img.timecdn.cn/2024/01/01/friend_404.gif!h.webp'" alt="avatar"/></div><div class="author-info__name">海润丰</div><div class="author-info__description">济宁海润丰有限公司</div></div><div class="card-info-data site-data is-center"><a href="/hrfship/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/hrfship/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/hrfship/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" href="mailto:s8712808@126.com"><i class="fas fa-envelope"></i><span>邮箱联系</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:s8712808@126.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p>济宁海润丰船务有限公司-邮箱</p><p>总经理 zch@hrfship.com</p><p>董事长 dsz@hrfship.com</p><p>业务部 ywb@hrfship.com</p><p>船员部 cyb@hrfship.com</p><p>证培部 zpb@hrfship.com</p><p>综合部 zhb@hrfship.com</p><p>财务部 cwb@hrfship.com</p><p>上海办事处 shb@hrfship.com</p><p>远洋劳务 yylw@hrfship.com</p><p>座机：0537-8706519 </p></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/dc446e0c.html" title="中波船代挂职交流">中波船代挂职交流</a><time datetime="2016-11-30T05:20:30.000Z" title="发表于 2016-11-30 13:20:30">2016-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/undefined.html" title="具备海船船员健康体检机构资质医院名单2015.3.16">具备海船船员健康体检机构资质医院名单2015.3.16</a><time datetime="2016-03-07T20:28:43.000Z" title="发表于 2016-03-08 04:28:43">2016-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/undefined.html" title="船员上海体检事项">船员上海体检事项</a><time datetime="2016-03-07T20:27:40.000Z" title="发表于 2016-03-08 04:27:40">2016-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/undefined.html" title="2016年春季招工简章">2016年春季招工简章</a><time datetime="2015-12-02T19:32:40.000Z" title="发表于 2015-12-03 03:32:40">2015-12-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/d4d22f51.html" title="济宁市人力资源服务">济宁市人力资源服务</a><time datetime="2015-11-02T16:00:00.000Z" title="发表于 2015-11-03 00:00:00">2015-11-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp" onerror="this.onerror=null;this.src='https://dl.img.timecdn.cn/2024/01/01/friend_404.gif!h.webp'" alt="avatar"/></div><div class="site-data text-center"><a href="/hrfship/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/hrfship/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/hrfship/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hrfship/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fal fa-book"></i><span> 目录</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/hrfship/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hrfship/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-minus"></i><span> 上海润缗</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/runmin1/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物质</span></a></li><li><a class="site-page child" href="/hrfship/runmin2/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物料供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin3/"><i class="fa-fw far fa-folder-open"></i><span> 船舶伙食供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin4/"><i class="fa-fw far fa-folder-open"></i><span> 船舶货物绑扎</span></a></li><li><a class="site-page child" href="/hrfship/runmin5/"><i class="fa-fw far fa-folder-open"></i><span> 船舶技术服务</span></a></li><li><a class="site-page child" href="/hrfship/runmin6/"><i class="fa-fw far fa-folder-open"></i><span> 船舶业务服务</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hrfship/dispatch/"><i class="fa-fw far fa-folder-open"></i><span> 劳务派遣</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/contact/"><i class="fa-fw fas fa-address-card"></i><span> 联系我们</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url(https://dl3.img.timecdn.cn/2025/04/04/boot1.png!h.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/hrfship/"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp" alt="Logo"><span class="site-name">济宁海润丰有限公司</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hrfship/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fal fa-book"></i><span> 目录</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/hrfship/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hrfship/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-minus"></i><span> 上海润缗</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hrfship/runmin1/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物质</span></a></li><li><a class="site-page child" href="/hrfship/runmin2/"><i class="fa-fw far fa-folder-open"></i><span> 船舶物料供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin3/"><i class="fa-fw far fa-folder-open"></i><span> 船舶伙食供应</span></a></li><li><a class="site-page child" href="/hrfship/runmin4/"><i class="fa-fw far fa-folder-open"></i><span> 船舶货物绑扎</span></a></li><li><a class="site-page child" href="/hrfship/runmin5/"><i class="fa-fw far fa-folder-open"></i><span> 船舶技术服务</span></a></li><li><a class="site-page child" href="/hrfship/runmin6/"><i class="fa-fw far fa-folder-open"></i><span> 船舶业务服务</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hrfship/dispatch/"><i class="fa-fw far fa-folder-open"></i><span> 劳务派遣</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/contact/"><i class="fa-fw fas fa-address-card"></i><span> 联系我们</span></a></div><div class="menus_item"><a class="site-page" href="/hrfship/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">济宁海润丰有限公司</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="mailto:s8712808@126.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="新船员上船须知">新船员上船须知</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T20:19:14.000Z" title="发表于 2014-03-06 04:19:14">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/">知识园地</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/">船员知识</a></span></div><div class="content">中波金乡基地船员上船须知1、船员在接到上船通知后，处理好家里相关事项，然后携带自己正常穿的衣物（含冬季衣服）、再备点-牙刷牙膏、洗发水等必需品就可。不要带的太多（以防以后下船公休时你有可能在国外买些东西、东西多到时回家很不好带），在上海或在船靠港时随时可以购买。2、船上发劳防用品：香皂、毛巾、洗衣粉、卫生纸、手套、工作服等等；在船上公家免费提供住宿，卧具是每月一换。不用带任何卧具。3、单位为每个人配备的伙食费一般每天9个美金左右，碗筷等都是船上的，房间每人一标准间（带卫生间）。所以大家食宿，不用考虑。4、船员接到通知后，在合理的路线上所产生的路费和住宿费中波是凭车票和发票给予报销的，以前一般飞机票和高铁不给报销，特殊除外。5、来到上海后-上船前的体检费和免疫费约六七百元，留好所有发票，中波公司报销。6、 新船员上船前——去医院体检和去海关大楼打针（办理健康证和免疫证书），一定要携带本人身份证，和2寸证件照片4张。7、乘车路线：抵达上海后，做地铁1号线，到通河新村站下车，从2号出口，就是浦江之星旅馆（地址：宝山区共和新路5523号–近长江西路；联系电话：021-56765008。8...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="船员基地与中介的区别">船员基地与中介的区别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T20:19:14.000Z" title="发表于 2014-03-06 04:19:14">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/">知识园地</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/">船员知识</a></span></div><div class="content">船员基地与中介的区别  1、中介只是：介绍-招工招聘、没有直接招工招聘的权利（国家规定经营人力资源、招工招聘、要有地区级以上颁发的资质证书，否则是非法的）没有与船员签合同的权利；  2、中介一般是指中介所、一般规模也不是很大，个人也可以做中介。  3、中介——意思就是中间介绍人或中间介绍所；起到的只是介绍作用（但作为职业介绍没有资质、无证经营也是非法的）。   船员基地：一般是指大的央企或国企船公司（船东公司）与合作公司共同办理设置的海员招工管理机构。  1、规范的符合标准的基地，要具有省级人力资源和社会保障局备案、地市级下文行政审批（由市政府的红头批文）的发人力资源经营许可证（资质）的单位，且要在当地县级以上工商局注册的合法单位。  2、代表基地的公司有签合同、缴纳社保、招工招聘、发放工资、决定奖惩、协调管理、职工的就业、安置与长期管理服务、等权利和项目；经营基地的公司必须是合法的企业（个人或民间团体是不行的）。  3、 目前有很多黑中介、或不合法的中介所或个人在搞船员招工、招聘、介绍，实际上是不合法的。就像建设承包大楼或公路或桥梁，要有相应资质一样，没有政府审批的招工招聘职业...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="船员疫苗接种事项">船员疫苗接种事项</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T20:19:14.000Z" title="发表于 2014-03-06 04:19:14">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/">知识园地</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/">船员知识</a></span></div><div class="content">船员疫苗接种事项  1、一般新船员上船、都要进行（黄热和霍乱）疫苗接种；费用大概300多元，凭发票公司报销。   2、预防接种（打免疫疫苗）的地址：上海海关（中山东一路13号外滩钟楼）一楼进门右侧。（就是上海外滩最繁华最热闹最具有上海标志的地方）   3、在上海百度地图——输入起点：上海远洋医院体检中心————终点：上海海关（中山东一路13号外滩钟楼）就可查得到。   4、船员到上海后一般第二天一早7点30前准时到达：上海远洋医院体检中心；进行体检；在等结果时，打的或坐公交到海关大楼打针预防接种，回来正好拿结果。一上午全部结束。下午1点30去中波船员部开会，等上船。如当天不上船，有多余时间，可以在上海玩玩。  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="沪东中华造船集团有限公司招工简章">沪东中华造船集团有限公司招工简章</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:50:22.000Z" title="发表于 2014-03-06 03:50:22">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">招聘简章： 工种：电焊工（手工焊、二氧化碳气体保护焊）、装配工（冷做工、铆焊工）、打磨工、船舶电工、管子工、普工、船装工、行车工、起重工、火工、架子工、油漆工、保安、保洁、学徒工等。 工资待遇：实行小时工薪制，学徒工每小时为13元，熟练工工价另订，每天工作八小时，自愿加班者工资另加，每月28号将上月工资汇到本人的账户。 其他福利待遇：员工一经录用为了保护员工的利益，我公司将为员工购买城镇保险，并与员工签订劳动合同，目前我公司的福利待遇如下：(1)电焊津贴（一类焊工每月100元，二类焊工500，三类焊工1000）(2)等级工津贴（中级每月500元，高级工每月1000元），两者可同时享受。(3)高温费：800元—1500元(4)年终奖：4000—8000元工作满一年后我公司将对部分技术骨干经考核后提拔为组班长，班组长为7000—10000元。 热烈欢迎广大有志青年来我公司工作，我公司将为每个人提供施展自己才能的舞台，找到自己人生价值的所在！！！ 电焊工（手工焊、二氧化碳气体保护焊）、装配工（冷做工、铆焊工）、打磨工、船舶电工、管子工、普工、学徒工等。电焊工：熟练工（130-220元8...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海东方航空95530招聘票务客服">上海东方航空95530招聘票务客服</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:48:30.000Z" title="发表于 2014-03-06 03:48:30">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海东方航空95530招聘票务客服一、任职资格：工作时间：一、薪资待遇全职员工：中文席：税前2900元&#x2F;月-3600元&#x2F;月，（按员工等级评定工资，含车、饭贴）外语席：税前4250元&#x2F;月，（含车、饭贴）学生实习：税前2000元&#x2F;月（含车、饭贴） 二、其他福利加四金，住房补贴300元&#x2F;月（按实际路线核定），年底双薪，高温发放，带薪休假，旅游疗养，免费体检等（以上福利实习生基本同全职） 三、岗位要求入职需参加培训，为期15个工作日，每天补贴30元，考核通过后签订两年劳动合同。（中文席）：（1）口齿清晰、声音悦耳，普通话标准（能听懂沪语优先）；（2）反应敏捷、亲切耐心；（3）中文听打输入40字&#x2F;分钟以上；（4）熟练应用office软件；（5）具有良好的人际沟通能力和语言表达能力；（6）性格开朗、成熟自信，应变能力强。（韩语席）：（1）口齿清晰、声音悦耳，普通话标准（能听懂沪语优先）；（2）韩语的熟练听讲写(3)能力反应敏捷、亲切耐心；（4）熟练应用office软件；（5）具有良好的人际沟通能力和语言表达能力；（6）性格开朗、成熟...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海浦东机场公安辅警招聘">上海浦东机场公安辅警招聘</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海浦东机场公安辅警招聘  一、招聘条件18-28周岁，男，1.70米以上，初中以上文化程度，身体健康，无传染病，无纹身，无违法记录，视力正常，退伍军人、有专业特长的或学历高的可优先录取。   二、免费提供提供免费住房，房间内有有空调，楼层内有洗衣机、冰箱、液晶电视、乒乓球室、免费网吧、浴室。统一发放被褥、制服（春秋、夏、冬三套）脸盆、拖鞋等劳防用品。。单位有福利食堂，刷卡进餐。入职即办理综合保险（含工伤保险、药费补贴和养老保险）。  三、福利待遇第一个月带薪军训军事化管理，第一个月工资1500元，第二个月2000以上，第三个月3000元以上。全年工资总额3万元以上。8小时做五休二。12小时做二休二，每月15号发放工资。每年有年终奖：第一年：1200元；第二年：2400元；第三年：3600元。每年有20天休假（带薪），回家车费报销。 联系人；张经理 13583739958 0537-8706519 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海虹桥机场航站楼服务人员招聘简章">上海虹桥机场航站楼服务人员招聘简章</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海虹桥机场航站楼服务人员招聘简章一、岗位职责1、文笔书写工整；2、指引机场客人办理登机相关手续；3、办理航空公司联名会员卡、信用卡；4、办理机票业务和其他相关联业务； 二、任职要求1、只限女性，年龄18-28岁； 身高160以上，男孩子可以带1-2个，身高170以上。2、态度端正、开朗活泼、言谈举止大方，待人诚恳； 3、文笔书写工整；4、品行端正，抗压能力强，良好服务意识；5、工作积极主动，责任心强，能独立开展工作，具有开拓精神； 6、有较强的学习意识和团队合作精神。 三、公司福利1、提成制工资，月薪一般在2700-5000元；保底底薪 2700元面试印象实习期为：三到六个月、根据个人表现可提前转正实习期内工资比正式工资低五百。2、工作6天休息一天；3、公司提供每月手机费补助；4、公司提供年终奖；5、提供机场食堂饭卡，自己冲卡进餐，不包住宿。6、如有未尽事宜或更改以公司最新制度为准7、工服押金：600离职全额退还（折旧费除外） 四、休息制 单休 五、工作范畴 1、工作地点：虹桥机场2号航站楼3楼 六、用工方式：签订正式劳动合同两年、（外包） 联系人；张经理 1358373995...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="上海高铁诚聘高铁乘务员乘服员">上海高铁诚聘高铁乘务员乘服员</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">上海高铁诚聘高铁乘务员乘服员岗位职责:职位要求:1、女，年龄18-30岁遵纪守法，品德良好，且取得中专及以上学历2、身高1.60米以上，五官端正，体态匀称，形象气质佳，讲话发音正确、标准、吐词清晰、善于表达.3、身体健康，无传染性病例，视力正常，能适应列车上长期工作。无晕车。 待遇、福利及工作地点、内容1、动车乘务人员工作方向，工作地点:(上海)2、凡经铁路有关部门及学校面试，考核。合格后，一律实行合同制，一经录用，公司具有完善的培训体系.将提供良好的培训及发展机会3、实行做2休3制度(每月12-15天班)统一服装。统一箱包。录用后薪资:工资4000-6000元&#x2F;月，不包括奖金，补助等其它福利待遇。4、按照国家规定缴金，提供同行间最具竞争力的薪金待遇以及广阔的发展空间。5、报名填表时，需提供本人身份证原件(验证)及正反复印件5张、一寸相片5张。联系人；张经理 13583739958 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="招聘随航普工/远洋公司诚聘国内国际船员海员随航普工">招聘随航普工/远洋公司诚聘国内国际船员海员随航普工</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">远洋公司诚聘国内国际船员海员随航普工岗位职责： （一）招聘要求：1、年龄在18~51周岁，初中（含）以上文化程度。2、身体健康无高血压，无重传染性疾病。3、无过大家庭负担，能适应长期性出差。4、有在公司长期稳定发展的打算。5、性格好，能团结同事，能服从领导的安排。6、做事认真细心负责，有较强的企业荣誉感和集体精神。 （二）主要工作内容及时间：1、一个航期大约15-25天，靠岸安排休息6-8天，无规则休息时间，闲时多休，忙时少休。 2、主要负责散货的拼箱、货物的盘点、分拣、整理、核对、整理、抛锚解缆、清洗甲板。3、小件物品需人工搬运，大件用叉车、吊车、无重大体力活。 （三）报名需知：1、先电话联系，方便人事部门安排时间接待，面试通过需做好随时上班的准备。2、带好一寸招聘2张（免冠、头发不能盖住眼睛、耳朵尽量露出来）、身份证原件、身份证复印件2张。3、党员、退伍军人优先，无经验可简单培训上岗。 （四）福利待遇：1、第一个月为试用期，工资为6000元+奖金+全勤+津贴。转正后为8000-12000元&#x2F;月+奖金+全勤+津贴。2、船上包吃包住，单人、双人宿舍需提前申请。3、公司负...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hrfship/archives/undefined.html" title="浦东机场东方航空客服招聘">浦东机场东方航空客服招聘</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2014-03-05T19:47:03.000Z" title="发表于 2014-03-06 03:47:03">2014-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">招聘信息</a></span></div><div class="content">浦东机场东方航空客服招聘   中国东方航空股份有限公司是一家总部设在中国上海的国有控股航空公司，于2002年在原中国东方航空集团公司的基础上，兼并中国西北航空公司，联合云南航空公司重组而成 。 航空公司呼叫中心客服专员 一、岗位要求：1、中文客服专员：1）中专或高中以上学历；2）熟练使用计算机常用办公软件，电脑打字熟练，30字&#x2F;分以上；3）普通话标准，具有良好的语言表达与沟通能力；4）有良好的客户服务意识和抗压能力，责任心强； 二普通客服户籍不限、男女18-35岁，一分钟打字30个字左右，普通话标准第一个月试用底薪1500元，期满后底薪1900元 +提成10%+全勤+绩效奖+补贴，夜班补贴50元，试用期工资3000元左右、平均工资3500元左右。 三、高级客服户籍不限、男女18-35岁，一分钟打字60个字左右，普通话标准，要会一门外语，底薪2500元+提成10%+全勤+绩效奖+补贴，夜班补贴50元，每月津贴0-2000元、综合工资4500元以上，8小时工作制，双休。 四、工作范围 查询订票和订票人工服务 五、能适应倒班。 联系人；张经理 13583739958 0537...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/hrfship/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/hrfship/">1</a><span class="space">&hellip;</span><a class="page-number" href="/hrfship/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/hrfship/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/hrfship/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://dl3.img.timecdn.cn/2025/04/04/Logo.png!h.webp" onerror="this.onerror=null;this.src='https://dl.img.timecdn.cn/2024/01/01/friend_404.gif!h.webp'" alt="avatar"/></div><div class="author-info-name">海润丰</div><div class="author-info-description">济宁海润丰有限公司</div><div class="site-data"><a href="/hrfship/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/hrfship/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/hrfship/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" href="mailto:s8712808@126.com"><i class="fas fa-envelope"></i><span>邮箱联系</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:s8712808@126.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p>济宁海润丰船务有限公司-邮箱</p><p>总经理 zch@hrfship.com</p><p>董事长 dsz@hrfship.com</p><p>业务部 ywb@hrfship.com</p><p>船员部 cyb@hrfship.com</p><p>证培部 zpb@hrfship.com</p><p>综合部 zhb@hrfship.com</p><p>财务部 cwb@hrfship.com</p><p>上海办事处 shb@hrfship.com</p><p>远洋劳务 yylw@hrfship.com</p><p>座机：0537-8706519 </p></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/dc446e0c.html" title="中波船代挂职交流">中波船代挂职交流</a><time datetime="2016-11-30T05:20:30.000Z" title="发表于 2016-11-30 13:20:30">2016-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/undefined.html" title="具备海船船员健康体检机构资质医院名单2015.3.16">具备海船船员健康体检机构资质医院名单2015.3.16</a><time datetime="2016-03-07T20:28:43.000Z" title="发表于 2016-03-08 04:28:43">2016-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/undefined.html" title="船员上海体检事项">船员上海体检事项</a><time datetime="2016-03-07T20:27:40.000Z" title="发表于 2016-03-08 04:27:40">2016-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/undefined.html" title="2016年春季招工简章">2016年春季招工简章</a><time datetime="2015-12-02T19:32:40.000Z" title="发表于 2015-12-03 03:32:40">2015-12-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hrfship/archives/d4d22f51.html" title="济宁市人力资源服务">济宁市人力资源服务</a><time datetime="2015-11-02T16:00:00.000Z" title="发表于 2015-11-03 00:00:00">2015-11-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/hrfship/categories/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a>
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/"><span class="card-category-list-name">招聘信息</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/"><span class="card-category-list-name">新闻动态</span><span class="card-category-list-count">23</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E5%85%AC%E5%8F%B8%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">公司新闻</span><span class="card-category-list-count">10</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E5%85%AC%E5%8F%B8%E6%96%B0%E9%97%BB/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/"><span class="card-category-list-name">知识园地</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E5%9F%BA%E5%9C%B0%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">基地新闻</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E8%88%AA%E8%BF%90%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">航运新闻</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E8%A1%8C%E4%B8%9A%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">行业新闻</span><span class="card-category-list-count">4</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/"><span class="card-category-list-name">知识园地</span><span class="card-category-list-count">12</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/hrfship/tags/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/" style="font-size: 1.45em; color: rgb(26, 101, 122)">新闻动态</a><a href="/hrfship/tags/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/" style="font-size: 1.3em; color: rgb(2, 117, 114)">招聘信息</a><a href="/hrfship/tags/%E8%88%AA%E8%BF%90%E6%96%B0%E9%97%BB/" style="font-size: 1.2em; color: rgb(179, 140, 99)">航运新闻</a><a href="/hrfship/tags/%E5%9F%BA%E5%9C%B0%E6%96%B0%E9%97%BB/" style="font-size: 1.25em; color: rgb(142, 96, 162)">基地新闻</a><a href="/hrfship/tags/%E5%85%AC%E5%8F%B8%E6%96%B0%E9%97%BB/" style="font-size: 1.3em; color: rgb(173, 20, 129)">公司新闻</a><a href="/hrfship/tags/%E8%A1%8C%E4%B8%9A%E6%96%B0%E9%97%BB/" style="font-size: 1.15em; color: rgb(116, 73, 70)">行业新闻</a><a href="/hrfship/tags/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/" style="font-size: 1.4em; color: rgb(173, 135, 119)">知识园地</a><a href="/hrfship/tags/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/" style="font-size: 1.35em; color: rgb(123, 22, 33)">船员知识</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/hrfship/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2016/11/"><span class="card-archive-list-date">十一月 2016</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2016/03/"><span class="card-archive-list-date">三月 2016</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2015/12/"><span class="card-archive-list-date">十二月 2015</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2015/11/"><span class="card-archive-list-date">十一月 2015</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2015/04/"><span class="card-archive-list-date">四月 2015</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2015/03/"><span class="card-archive-list-date">三月 2015</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2015/01/"><span class="card-archive-list-date">一月 2015</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/hrfship/archives/2014/12/"><span class="card-archive-list-date">十二月 2014</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">44</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2013-12-31T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">45.2k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-08-21T15:39:56.250Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2014 - 2025 By 海润丰</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/hrfship/js/utils.js?v=4.12.0"></script><script src="/hrfship/js/main.js?v=4.12.0"></script><script src="/hrfship/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.autoSpacingPage()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
-      .then(() => {
-        pangu.autoSpacingPage()
-      })
-  }
-}
-
-function panguInit () {
-  if (true){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
-
-document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
-  init: (str) => {
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/"><span class="card-category-list-name">招聘信息</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/"><span class="card-category-list-name">新闻动态</span><span class="card-category-list-count">32</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E5%85%AC%E5%8F%B8%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">公司新闻</span><span class="card-category-list-count">10</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E5%85%AC%E5%8F%B8%E6%96%B0%E9%97%BB/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/"><span class="card-category-list-name">知识园地</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E5%9F%BA%E5%9C%B0%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">基地新闻</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E8%88%AA%E8%BF%90%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">航运新闻</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/%E8%A1%8C%E4%B8%9A%E6%96%B0%E9%97%BB/"><span class="card-category-list-name">行业新闻</span><span class="card-category-list-count">4</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/hrfship/categories/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/"><span class="card-category-list-name">知识园地</span><span class="card-category-list-count">12</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/hrfship/tags/%E6%96%B0%E9%97%BB%E5%8A%A8%E6%80%81/" style="font-size: 1.45em; color: rgb(50, 144, 50);">新闻动态</a><a href="/hrfship/tags/%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/" style="font-size: 1.3em; color: rgb(122, 50, 150);">招聘信息</a><a href="/hrfship/tags/%E8%88%AA%E8%BF%90%E6%96%B0%E9%97%BB/" style="font-size: 1.2em; color: rgb(50, 50, 167);">航运新闻</a><a href="/hrfship/tags/%E5%9F%BA%E5%9C%B0%E6%96%B0%E9%97%BB/" style="font-size: 1.25em; color: rgb(50, 50, 50);">基地新闻</a><a href="/hrfship/tags/%E5%85%AC%E5%8F%B8%E6%96%B0%E9%97%BB/" style="font-size: 1.3em; color: rgb(138, 50, 50);">公司新闻</a><a href="/hrfship/tags/%E8%A1%8C%E4%B8%9A%E6%96%B0%E9%97%BB/" style="font-size: 1.15em; color: rgb(128, 166, 70);">行业新闻</a><a href="/hrfship/tags/%E7%9F%A5%E8%AF%86%E5%9B%AD%E5%9C%B0/" style="font-size: 1.4em; color: rgb(69, 50, 108);">知识园地</a><a href="/hrfship/tags/%E8%88%B9%E5%91%98%E7%9F%A5%E8%AF%86/" style="font-size: 1.35em; color: rgb(153, 132, 84);">船员知识</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/hrfship/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2016/11/">
+            <span class="card-archive-list-date">
+              十一月 2016
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2016/03/">
+            <span class="card-archive-list-date">
+              三月 2016
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2015/12/">
+            <span class="card-archive-list-date">
+              十二月 2015
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2015/11/">
+            <span class="card-archive-list-date">
+              十一月 2015
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2015/04/">
+            <span class="card-archive-list-date">
+              四月 2015
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2015/03/">
+            <span class="card-archive-list-date">
+              三月 2015
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2015/01/">
+            <span class="card-archive-list-date">
+              一月 2015
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/hrfship/archives/2014/12/">
+            <span class="card-archive-list-date">
+              十二月 2014
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">44</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">45.2k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-08-21T15:56:25.855Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2014 - 2025 By 海润丰</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/hrfship/js/utils.js?v=5.4.3"></script><script src="/hrfship/js/main.js?v=5.4.3"></script><script src="/hrfship/js/tw_cn.js?v=5.4.3"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
       startDelay: 300,
@@ -226,125 +248,138 @@ document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-
       backSpeed: 50,
     }, null))
   },
-  run: (subtitleType) => {
+  run: subtitleType => {
     if (true) {
       if (typeof Typed === 'function') {
         subtitleType()
       } else {
-        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
       }
     } else {
       subtitleType()
     }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["祝船员兄弟和家属身体健康，家庭幸福，万事如意！","你们是真正乘风破浪的人！"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
   }
 }
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
 </script><script>function subtitleType () {
-  if (true) {
-    typedJSFn.init(["祝船员兄弟和家属身体健康，家庭幸福，万事如意！","你们是真正乘风破浪的人！"])
-  } else {
-    document.getElementById("subtitle").textContent = "祝船员兄弟和家属身体健康，家庭幸福，万事如意！"
-  }
+  typedJSFn.processSubtitle(["祝船员兄弟和家属身体健康，家庭幸福，万事如意！","你们是真正乘风破浪的人！"])
 }
 typedJSFn.run(subtitleType)</script><script>(() => {
-  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
-  if ($mermaid.length === 0) return
-  const runMermaid = () => {
+  const runMermaid = ele => {
     window.loadMermaid = true
     const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
 
-    Array.from($mermaid).forEach((item, index) => {
+    ele.forEach((item, index) => {
       const mermaidSrc = item.firstElementChild
-      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
-      const mermaidID = 'mermaid-' + index
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
       const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
 
       const renderFn = mermaid.render(mermaidID, mermaidDefinition)
-
-      const renderV10 = () => {
-        renderFn.then(({svg}) => {
-          mermaidSrc.insertAdjacentHTML('afterend', svg)
-        })
-      }
-
-      const renderV9 = svg => {
+      const renderMermaid = svg => {
         mermaidSrc.insertAdjacentHTML('afterend', svg)
       }
 
-      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
     })
   }
 
   const loadMermaid = () => {
-    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js').then(runMermaid)
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.9.0/dist/mermaid.min.js').then(runMermaidFn)
   }
 
-  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
-
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
   window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-})()</script></div><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:description\"]","link[rel=\"canonical\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener
-  btf.removeGlobalFnEvent('pjax')
-  btf.removeGlobalFnEvent('themeChange')
-
-  document.getElementById('rightside').classList.remove('rightside-show')
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
-
-  typeof typed === 'object' && typed.destroy()
-
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
-
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
   })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
-
-document.addEventListener('pjax:error', e => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/hrfship/404.html')
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
   }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/hrfship/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true
+        ? (usePjax ? pjax.loadUrl('/hrfship/404.html') : window.location.href = '/hrfship/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
